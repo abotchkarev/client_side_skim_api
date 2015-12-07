@@ -1,0 +1,27 @@
+<% content_for :title do %>Messages<% end %>
+<h3>Here are the messages for <%= @user.name %></h3>
+
+<div id="messages">
+  <% @messages.each do |message| %>
+    <div class="row">  
+      <details>
+        <summary class="col-md-4"><%= message.id %>. <%= message.subject %></summary>
+        <p class="col-md-8"><%= message.body %></p>
+      </details>
+    </div>
+  <% end %>
+</div>
+
+<%= form_tag("/api/messages", method: "post", remote: true,
+  id: "new-message-form", 
+  data: {type: 'json', messages_url: messages_list_url}) do %>
+
+  <%= label_tag(:add_user, "Add Message:") %><br/>
+  Subject:<br/>
+  <%= text_field_tag("message[subject]") %><br/>
+  Body:<br/>
+  <%= text_area_tag("message[body]") %><br/>
+  <%= hidden_field_tag("message[user_id]", @user.id) %>
+  <%= submit_tag("Add") %>
+
+<% end %>
