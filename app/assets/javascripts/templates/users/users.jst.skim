@@ -1,0 +1,2 @@
+- $.each @users, (index, user)->
+  

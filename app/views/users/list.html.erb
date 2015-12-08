@@ -1,45 +1,10 @@
 <% content_for :title do %>Users<% end %>
+
 <h3>Here is the user list.  Please click on one to see messages.</h3>
 <br/>
-
-<div id="users">
-  <% User.all.each do |user| %>
-    <p class="row">
-      <%= link_to "#{user.id}. #{user.name}", 
-        messages_list_path(user_id: user.id), class: "col-md-3" %>
-      <span class="col-md-3"> Age: <%= user.age %></span>
-      <span class="col-md-3"> Country: <%= user.country %></span>
-      <span class="col-md-3"> Gender: <%= user.gender %></span>
-    </p>
-  <% end %>  
-</div>
-
+<div id="users" data-users-url="<%= api_users_url(format: 'json') %>"></div>
 <br/>
-
-<%= form_tag("/api/users", method: "post", remote: true, 
-  id: "new-user-form", 
-  data: {type: 'json', url: messages_list_url}) do %>
-
-<p><%= label_tag(:add_user, "Add User:") %></p>
-<div class="row"> 
-  <div class="col-md-3">
-    <%= text_field_tag("user[name]", nil, 
-      placeholder: "Enter Name", class: "form-control") %>
-  </div>
-  <div class="col-md-3">
-    <%= text_field_tag "user[birthdate]", nil, data: {provide: 'datepicker'},
-      placeholder: "Select Birthday", class: "form-control" %>
-    </div>
-  <div class="col-md-3">
-    <%= select_tag("user[gender]", options_for_select(["male", "female"]), 
-      include_blank: "Select gender", class: "form-control") %>
-    </div>
-  <div class="col-md-3">
-    <%= select_tag("user[country]", options_for_select(User.enum_countries), 
-      include_blank: "Select Country", class: "form-control") %>
-    </div>
-  </div>
 <br/>
-<p><%= submit_tag "Add", class: "btn btn-primary" %></p>
+<%= form_tag api_users_path(format: "json"), method: "post", remote: true, id: "new-user-form" do %>
 
 <% end %>

@@ -36,6 +36,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
 end
 group :production do
   gem 'pg'

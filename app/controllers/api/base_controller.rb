@@ -6,9 +6,10 @@ class Api::BaseController < ApplicationController
   # GET /api/{plural_resource_name}
   def index
     plural_resource_name = "@#{resource_name.pluralize}"
+    #binding.pry
     resources = resource_class.where(query_params)
-                    .page(page_params[:page])
-                    .per(page_params[:page_size])
+                    .page(page_params[:page] || 1)
+                    .per(page_params[:page_size] || 20)
 
     instance_variable_set(plural_resource_name, resources)
     respond_with instance_variable_get(plural_resource_name)
@@ -21,9 +22,7 @@ class Api::BaseController < ApplicationController
 
   def create
     set_resource(resource_class.new(resource_params))
-    puts "+++111+++"
     if get_resource.save
-      puts "+++222+++"
       render :show, status: :created, location: get_resource
     else
       render json: get_resource.errors, status: :unprocessable_entity
