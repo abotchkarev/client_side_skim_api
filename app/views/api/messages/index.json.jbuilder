@@ -1,6 +1,11 @@
-json.messages @messages do |message|
-  json.id    message.id
-  json.subject message.subject
+json.className @resource_name
 
-  json.user_id message.user ? message.user.id : nil
+json.flash flash
+
+json.messages do
+  json.array! @messages do |message|
+   json.partial! "message", message: message
+ end
 end
+
+json.pagination paginate(@messages, remote: true)

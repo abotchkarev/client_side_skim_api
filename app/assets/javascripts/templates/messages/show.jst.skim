@@ -1,0 +1,5 @@
+.row id="message_#{{ @message.id }}"
+  details
+    summary.col-md-4 
+      | #{ @message.id }. #{ @message.subject }
+    p.col-md-8  #{ @message.body } 

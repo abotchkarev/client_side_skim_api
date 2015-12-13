@@ -1,21 +1,24 @@
-p
-  label[ for="add_user"] Add User:
+h4 Add User:
+
 .row
-  .col-md-3
+  .form-group.col-md-3
     input#user_name.form-control type="text" name="user[name]" placeholder="Enter Name"
-  .col-md-3
+
+  .form-group.col-md-2
     input#user_birthdate.form-control type="text" name="user[birthdate]" data-provide="datepicker" placeholder="Select Birthday" 
-  .col-md-3
+
+  .form-group.col-md-2
     select#user_gender.form-control name="user[gender]"
       option value="" Select gender
       option value="male" male
       option value="female" female
 
-  .col-md-3
+  .form-group.col-md-2
     select#user_country.form-control name="user[country]"
-      option value="" selected="selected" Select Country
-      option value="CA" Canada
-      option value="US" United States
-br
-p
-  input.btn.btn-primary type="submit" name="commit" value="Add"
+      option value="" Select Country
+
+      - $.each $("#new-user-form").data("countries"), (index, country) ->
+        option value="#{{country[1]}}" #{{country[0]}}
+
+  .form-group.col-md-1
+    input.btn.btn-primary.form-control type="submit" name="commit" value="Add"

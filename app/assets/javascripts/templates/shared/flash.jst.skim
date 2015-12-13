@@ -1,0 +1,12 @@
+- return unless @flash
+
+- $.each @flash, (index, arr) -> 
+
+  - name = arr[0]
+  - msg  = arr[1]
+
+  .alert class="alert-#{{ if name == 'notice' then 'success' else 'danger' }}"
+    button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+    div id="flash_#{{name}}" 
+      b> #{{name}}: 
+      | #{{msg}}

@@ -1,0 +1,19 @@
+h4 Add Message:
+.row
+  input#message_user_id type="hidden" value="#{{ $("#new-message-form").data("userId") }}"
+
+  .form-group.col-md-4
+     label.control-label for="message_subject" Subject:
+     input#message_subject.form-control[ type="text" name="message[subject]" 
+       placeholder="Required" ]
+
+  .form-group.col-md-4
+    label.control-label for="message_body" Body:
+    input#message_body.form-control type="text" name="message[body]" 
+
+  .form-group.col-md-1
+    label &nbsp;
+    input.btn.btn-primary.form-control type="submit" name="commit" value="Add"
+
+  
+

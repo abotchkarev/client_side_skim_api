@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
   
+  validates :name, :birthdate, :gender, :country, presence: true
+  validate :date_not_in_future 
+  
+  def date_not_in_future
+    if birthdate
+      errors[:birthdate] << "Cannot be in the future" if birthdate > Date.today
+      errors[:base] << "Must be 21+ to register" if birthdate > Date.today - 21.years
+    end
+  end
+   
+  default_scope { order("id DESC") }
   class <<  self
     def supported_countries
       %w[CA US]

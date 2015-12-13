@@ -1,0 +1,10 @@
+- content_for :title do 
+  | Messages
+
+h3 Here are the messages for #{ @user.name }
+
+#messages data-url="#{ api_messages_url(format: 'json') }"
+
+= form_tag( api_messages_path(format: :json), method: :post, remote: true,
+  id: 'new-message-form', data: {user_id: @user.id}) do
+  

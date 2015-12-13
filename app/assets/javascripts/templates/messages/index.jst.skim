@@ -1,0 +1,11 @@
+.row
+  .col-md-6 
+    span.pull-right == @pagination
+
+- $.each @messages, (index, message)->
+  == JST["templates/messages/show"](message)
+
+.row
+  .col-md-6 
+    span.pull-right == @pagination
+  

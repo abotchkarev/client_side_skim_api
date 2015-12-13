@@ -1,5 +1,4 @@
 p.row id="user_#{{ @user.id }}"
-
   .col-md-3 
     a href="#{{ @user.url }}"
       | #{{ @user.id }}. #{{ @user.name }}  
