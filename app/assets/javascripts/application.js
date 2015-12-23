@@ -17,3 +17,5 @@
 //= require skim
 //= require bootstrap-datepicker
 //= require_tree .
+
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";

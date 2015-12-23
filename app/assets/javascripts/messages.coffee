@@ -1,6 +1,12 @@
 $(document).on 'ready page:load', ->
 
-  if $("#messages").size() > 0
+  if document.getElementById("messages")
    
-    messageAPI = new MYAPP.SkimAPI("messages") 
-    messageAPI.start()
+    resourceName = "message"
+    pluralResourceName = "messages"
+    
+    #if $("##{pluralResourceName}[data-resource-name='#{resourceName}']")[0]
+    if document.getElementById(pluralResourceName)
+
+      messageAPI = new CLIENT.SkimAPI(resourceName, pluralResourceName)
+      messageAPI.start()

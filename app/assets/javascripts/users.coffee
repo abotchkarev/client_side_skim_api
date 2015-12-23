@@ -1,9 +1,12 @@
-$.fn.datepicker.defaults.format = "yyyy-mm-dd";
-
 $(document).on 'ready page:load', ->
 
-  if $("#users").size() > 0
-   
-    userAPI = new MYAPP.SkimAPI("users") 
-    debugger
-    userAPI.start() 
+  if document.getElementById("users")
+  
+    resourceName = "user"
+    pluralResourceName = "users"
+    
+    #if $("#users[data-resource-name='#{resourceName}']")[0]
+    if document.getElementById(pluralResourceName)
+    
+      userAPI = new CLIENT.SkimAPI(resourceName, pluralResourceName)    
+      userAPI.start() 

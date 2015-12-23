@@ -1,6 +1,6 @@
 p.row id="user_#{{ @user.id }}"
   .col-md-3 
-    a href="#{{ @user.url }}"
+    a.clear-user-api href="#{{ @user.url }}"
       | #{{ @user.id }}. #{{ @user.name }}  
   .col-md-2 Age: #{{ @user.age }}  
   .col-md-2 Gender: #{{ @user.gender }}

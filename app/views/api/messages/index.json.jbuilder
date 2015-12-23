@@ -1,4 +1,5 @@
-json.className @resource_name
+# json.resourceName @resource_name
+# json.pluralResourceName @resource_name.pluralize
 
 json.flash flash
 

@@ -3,7 +3,9 @@
 
 h3 Here is the user list.  Please click on one to see messages.
 
-#users data-url="#{ api_users_url(format: 'json') }"
+#users*{ data: { url: "#{ api_users_url(format: 'json') }",
+                resource_name: "user",
+                plural_resource_name: "users" }}
 
 = form_tag api_users_path(format: "json"), method: "post", remote: true, 
   id: "new-user-form", data: {countries: User.enum_countries.to_json } do 
