@@ -7,6 +7,21 @@ Rails 4.2 example application that integrates Rails, Bootstrap 3.3 and Skim.
 
 "Skim":https://github.com/appjudo/skim Fat-free client-side templates with Slim and CoffeeScript
 
+h2. How to start this app
+
+Make sure you have access to mysql DB via localhost:3306
+
+$ cp .env .env.local
+
+Populate .env.local with credentals (DB_USERNAME, DB_PASSWORD) to access your DB
+Default DB names to be created are 'railsapp_development' and  'railsapp_test'
+Edit database.yml for changes
+
+$ rake db:setup
+$ rails s
+ 
+h2. Text below comes from app generator
+
 Use this example application as a starter app for your own web applications.
 
 You can build this application in only a few minutes using the "Rails Composer":http://railsapps.github.io/rails-composer/ tool.
